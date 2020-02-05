@@ -1,8 +1,8 @@
 from tkinter import *
 import cv2
 import numpy as np
-face_cascade = cv2.CascadeClassifier('C:\\opencv\\opencv\\build\\etc\\haarcascades\\haarcascade_frontalface_default.xml')
-eye_cascade = cv2.CascadeClassifier('C:\\opencv\\opencv\\build\\etc\\haarcascades\\haarcascade_eye.xml')
+face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_eye.xml")
 
 
 root = Tk()
@@ -23,6 +23,7 @@ def start_recording():
 
     while (cap.isOpened()):
         ret, frame = cap.read()
+        print('Recording!!!')
         if ret == True:
             # frame = cv2.flip(frame, 0)
             out.write(frame)
@@ -56,7 +57,7 @@ def stop_recording():
 
 
 
-button1 = Button(root, text="Start", width=10, command=start_recording)
+button1 = Button(root, text="Start", width=10, command=start_recording,bg="blue")
 button2 = Label(root, text="To Stop and save video press 'q'", width=40)
 button1.grid(row=0, column=0, padx=70, pady=50)
 button2.grid(row=0, column=1, padx=8, pady=50)
